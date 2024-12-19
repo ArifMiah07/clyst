@@ -1,50 +1,129 @@
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { FaHome, FaUserFriends, FaUsers, FaSearch, FaEllipsisH, FaBars, FaTimes } from "react-icons/fa";
+import { IoMdAddCircle } from "react-icons/io";
+import logo from "../../../assets/logo.png";
 
 const Nav = () => {
+  const [menuOpen, setMenuOpen] = useState(false);  // State to control the hamburger menu
+  const navLinks = (
+    <>
+      <li>
+        <NavLink
+          to={"/"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
+        >
+          <FaHome /> Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/friends"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
+        >
+          <FaUserFriends /> Friends
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/groups"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
+        >
+          <FaUsers /> Groups
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/post"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
+        >
+          <IoMdAddCircle /> Post
+        </NavLink>
+      </li>
+    </>
+  );
 
-    const navLinks = <>
-    <li><NavLink to={'/'} className="text-black hover:text-green-400 hover:text-[21px] ">Home</NavLink> </li>
-    <li><NavLink to={'/page'} className="text-black hover:text-green-400 hover:text-[21px] ">Page</NavLink> </li>
-    <li><NavLink to={'/group'} className="text-black hover:text-green-400 hover:text-[21px] ">Group</NavLink> </li>
-    <li><NavLink to={'/post'} className="text-black hover:text-green-400 hover:text-[21px] ">post</NavLink> </li>
-    <li><NavLink to={'/more'} className="text-black hover:text-green-400 hover:text-[21px] ">more </NavLink> </li> 
-
-</>
+  const user = false;
+  const register = false;
 
   return (
-    <div className="navbar border-b-2 border-blue-400 bg-base-100">
+    <div className="navbar p-0 border-b-2 border-blue-400 bg-base-100 shadow-md">
+      {/* Left Section */}
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-            {navLinks}
-          </ul>
+        <a className="btn btn-ghost hover:bg-[#0f00f0] text-xl">
+          <img className="w-[40px]" src={logo} alt="Clyst logo" />
+        </a>
+        {/* Search Bar (Desktop) */}
+        <div className="hidden lg:flex items-center ml-4">
+          <input
+            type="text"
+            placeholder="Search"
+            className="input input-bordered w-64"
+          />
+          <button className="btn btn-primary ml-2">
+            <FaSearch />
+          </button>
         </div>
-        <a className="btn btn-ghost text-xl">Clyst</a>
       </div>
+
+      {/* Hamburger Icon for Mobile */}
+      <div className="lg:hidden navbar-end">
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-2xl">
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* Center Section (Desktop) */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          {navLinks}
-        </ul>
+        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Profile</a>
+
+      {/* Mobile Menu (Toggled by hamburger) */}
+      <div
+        className={`lg:hidden w-full bg-base-100 absolute top-16 left-0 shadow-lg ${
+          menuOpen ? "block" : "hidden"
+        }`}
+      >
+        <ul className="menu p-4">{navLinks}</ul>
+      </div>
+
+      {/* Right Section */}
+      <div className="navbar-end flex items-center gap-4">
+        {
+          user ?  
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost">
+              <img
+                src="https://via.placeholder.com/40"
+                alt="Profile"
+                className="rounded-full w-10"
+              />
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <a>Profile</a>
+              </li>
+              <li>
+                <a>Settings</a>
+              </li>
+              <li>
+                <a>Logout</a>
+              </li>
+            </ul>
+          </div>
+          : 
+          register ?   
+            <button className="btn btn-primary">
+              <Link to={'/login'}>Login</Link>
+            </button> 
+            : 
+            <button className="btn btn-primary">
+              <Link to={'/register'}>Register</Link>
+            </button> 
+        }
       </div>
     </div>
   );

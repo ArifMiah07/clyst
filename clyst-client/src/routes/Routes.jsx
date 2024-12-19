@@ -4,6 +4,8 @@ import Home from "../pages/Home/Home";
 import CreateAPost from "../pages/Dashboard/CreateAPost/CreateAPost";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
+import Friend from "../pages/Board/Friend/Friend";
+
 const router = createBrowserRouter([
     {
       path: "/",
@@ -17,6 +19,10 @@ const router = createBrowserRouter([
         {
             path: '/post',
             element: <CreateAPost></CreateAPost>
+        },
+        {
+          path: '/friends',
+          element: <Friend></Friend>
         }
       ]
     },

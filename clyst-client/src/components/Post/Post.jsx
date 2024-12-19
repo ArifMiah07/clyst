@@ -3,13 +3,24 @@ import { CiMenuKebab } from "react-icons/ci";
 
 const Post = ({ data }) => {
   const [showFullText, setShowFullText] = useState(false);
+  const [openPostMenu, setOpenPostMenu] = useState(false);
 
   const handleFullText = () => setShowFullText(true);
   const handleShortText = () => setShowFullText(false);
 
+  // const openPostMenu = () => setOpenPostMenu(false);
+  // const closePostMenu = () => setClosePostMenu(true);
+
+
   const contentText = data.text; // Text from data
-  const placeholderImg =
-    "https://via.placeholder.com/54?text=No+Image"; // Fallback for profileImage or imgUrl
+  const placeholderImg ="https://via.placeholder.com/54?text=No+Image"; // Fallback for profileImage or imgUrl
+
+  const handlePostMenu = ()=>{
+    console.log('clicked')
+    setOpenPostMenu(true);
+  }
+  
+
 
   return (
     <div className="border border-gray-300 shadow-md rounded-lg p-4 bg-white w-full max-w-lg mx-auto">
@@ -31,7 +42,7 @@ const Post = ({ data }) => {
           </div>
         </div>
         {/* Menu Icon */}
-        <CiMenuKebab className="text-gray-500 text-xl cursor-pointer" />
+        <CiMenuKebab onClick={handlePostMenu} className="text-gray-500 text-xl cursor-pointer" />
       </div>
 
       {/* Content */}
