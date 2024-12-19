@@ -6,8 +6,8 @@ const Main = () => {
     return (
         <div>
             <Nav></Nav>
-            <div className="p-2">
-            <Outlet></Outlet>
+            <div className="lg:h-[525px] overflow-y-scroll ">
+                <Outlet></Outlet>
             </div>
         </div>
     );

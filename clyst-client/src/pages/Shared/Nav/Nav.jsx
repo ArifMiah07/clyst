@@ -47,7 +47,7 @@ const Nav = () => {
   const register = false;
 
   return (
-    <div className="navbar p-0 border-b-2 border-blue-400 bg-base-100 shadow-md">
+    <div className="navbar space-x-2 border-b-2 border-blue-400 bg-base-100 shadow-md">
       {/* Left Section */}
       <div className="navbar-start">
         <a className="btn btn-ghost hover:bg-[#0f00f0] text-xl">

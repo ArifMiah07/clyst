@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Tech Enthusiasts",
+    "description": "A group for tech lovers to discuss the latest trends in technology and innovation.",
+    "members": 120,
+    "admin": "JohnDoe",
+    "image": "https://media.istockphoto.com/id/1344939844/photo/hand-holding-drawing-virtual-lightbulb-with-brain-on-bokeh-background-for-creative-and-smart.jpg?s=612x612&w=0&k=20&c=2GLUy6eqCSr0NFRO8CHm8_PUMy9Qc8ryqcsRoe0DEYM="
+  },
+  {
+    "id": 2,
+    "name": "Cooking Lovers",
+    "description": "A group for those who love cooking and sharing recipes.",
+    "members": 250,
+    "admin": "JaneSmith",
+    "image": "https://media.istockphoto.com/id/646714512/photo/young-couple-in-love-in-the-kitchen.jpg?s=612x612&w=0&k=20&c=MVKGI7XFn32zBADpcfxNO9lLfYE809oaX6pmC9WQlvU="
+  },
+  {
+    "id": 3,
+    "name": "Travel Buddies",
+    "description": "A group for people who love to travel and explore new places.",
+    "members": 80,
+    "admin": "AlexJohnson",
+    "image": "https://media.istockphoto.com/id/1369357236/photo/young-hikers-relax-at-big-rock-or-cliff.jpg?s=612x612&w=0&k=20&c=bU88z-Spsrw4gQWGhFkBaNls_MjjUSrTzxQSYXqDsTM="
+  },
+  {
+    "id": 4,
+    "name": "Fitness Freaks",
+    "description": "A group for fitness enthusiasts, sharing workout plans and health tips.",
+    "members": 300,
+    "admin": "SarahLee",
+    "image": "https://media.istockphoto.com/id/501656512/video/santa-in-a-gym-training-biceps-004.jpg?s=640x640&k=20&c=VJX1kOIJ7axGh3jXwQy8eOOaBnZuD5gTlYPP04Jm4HQ="
+  },
+  {
+    "id": 5,
+    "name": "Book Club",
+    "description": "A group for avid readers to share and discuss books they love.",
+    "members": 50,
+    "admin": "ChrisGreen",
+    "image": "https://media.istockphoto.com/id/1389876696/photo/enjoying-reading-and-learning-in-library.jpg?s=612x612&w=0&k=20&c=fPPTlXjut4G9dguWFPbcLwSTy0g3ENx9Ku6t3bWOD68="
+  }
+]

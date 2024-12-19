@@ -18,7 +18,7 @@ const Feed = () => {
 
   return (
     <div>
-      <div className="flex flex-col gap-2 h-[500px] overflow-y-scroll scroll-smooth">
+      <div className="flex flex-col gap-2 ">
         {postData?.map((d, i) => (
           <Post key={d._id} data={d} /> // Pass "data" directly
         ))}
