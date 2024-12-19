@@ -15,12 +15,10 @@ const Register = () => {
   const handleRegister = (e) => {
     e.preventDefault();
     console.log("Registering user with:", formData);
-    // Add Firebase or backend logic later
   };
 
   const handleGoogleRegister = () => {
     console.log("Google Register initiated");
-    // Add Firebase Google auth logic later
   };
 
   return (

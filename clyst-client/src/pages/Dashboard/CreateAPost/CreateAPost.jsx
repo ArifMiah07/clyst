@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import blueBird from "../../../assets/blue-bird-2.png";
 import Swal from "sweetalert2";
+import Loading from "../../Shared/Loading/Loading";
 
 const CreateAPost = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  
   const handleCreateAPost = async (e) => {
     e.preventDefault();
-
+    setIsLoading(true); // Show loading while submitting
+  
     const form = e.target;
     const text = form.text.value;
     const imgUrl = form.imgUrl.value;
@@ -15,7 +20,7 @@ const CreateAPost = () => {
     const email = form.email.value;
     const date = form.date.value;
     const time = form.time.value;
-
+  
     const serverData = {
       name,
       userName,
@@ -26,7 +31,7 @@ const CreateAPost = () => {
       imgUrl,
       profileImage,
     };
-
+  
     Swal.fire({
       title: "Do you want to create a new post?",
       showDenyButton: true,
@@ -39,7 +44,7 @@ const CreateAPost = () => {
           const res = await fetch("http://localhost:5000/api/data", {
             method: "POST",
             headers: {
-              "content-type": "application/json",
+              "Content-Type": "application/json",
             },
             body: JSON.stringify(serverData),
           });
@@ -51,12 +56,16 @@ const CreateAPost = () => {
         } catch (error) {
           Swal.fire("Error", "An error occurred while saving your data.", "error");
           console.error("Error:", error);
+        } finally {
+          setIsLoading(false); // Hide loading after completion
         }
-      } else if (result.isDenied) {
-        Swal.fire("Canceled", "", "info");
+      } else {
+        setIsLoading(false); // Hide loading if canceled
       }
     });
   };
+  
+  if (isLoading) return <Loading />;
 
   return (
     <div className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex items-center justify-center py-12">

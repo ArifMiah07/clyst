@@ -8,6 +8,7 @@ import Friend from "../pages/Board/Friend/Friend";
 import Group from "../pages/Board/Group/Group";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import Dashboard from "../pages/Dashboard/Dashboard";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
         },
         {
             path: '/post',
-            element: <CreateAPost></CreateAPost>
+            element: <Dashboard></Dashboard>
         },
         {
           path: '/friends',
