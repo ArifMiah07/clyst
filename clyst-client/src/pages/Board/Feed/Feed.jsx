@@ -4,7 +4,7 @@ import Post from '../../../components/Post/Post';
 const Feed = () => {
     return (
         <div>
-            <div className='flex flex-col gap-2 h-[500px] overflow-scroll'>
+            <div className='flex flex-col gap-2 h-[500px] overflow-scroll scroll-smooth'>
                 <Post></Post>
             </div>
         </div>
