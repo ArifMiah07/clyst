@@ -9,18 +9,22 @@ const CreateAPost = () => {
     const form = e.target;
     const text = form.text.value;
     const imgUrl = form.imgUrl.value;
+    const profileImage = form.profileImage.value;
     const name = form.name.value;
+    const userName = form.userName.value;
     const email = form.email.value;
     const date = form.date.value;
     const time = form.time.value;
 
     const serverData = {
       name,
+      userName,
       email,
       date,
       time,
       text,
       imgUrl,
+      profileImage
     };
 
     Swal.fire({
@@ -70,6 +74,13 @@ const CreateAPost = () => {
             name="name"
             type="text"
           />
+          <label>User Name</label>
+          <input
+            required
+            className="border border-green-100 hover:border-blue-600 hover:scale-x-105 outline-none hover:bg-[#9d00ff1a] rounded-lg p-2 mb-3 mt-2"
+            name="userName"
+            type="text"
+          />
           <label>Email</label>
           <input
             required
@@ -90,6 +101,13 @@ const CreateAPost = () => {
             className="border border-green-100 hover:border-blue-600 hover:scale-x-105 outline-none hover:bg-[#9d00ff1a] rounded-lg p-2 mb-3 mt-2"
             name="time"
             type="time"
+          />
+          <label>Profile Image Url</label>
+          <input
+            required
+            className="border border-green-100 hover:border-blue-600 hover:scale-x-105 outline-none hover:bg-[#9d00ff1a] rounded-lg p-2 mb-3 mt-2"
+            name="profileImage"
+            type="text"
           />
           <label>Image URL</label>
           <input
