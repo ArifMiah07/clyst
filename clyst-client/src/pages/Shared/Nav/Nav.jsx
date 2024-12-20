@@ -3,9 +3,22 @@ import { Link, NavLink } from "react-router-dom";
 import { FaHome, FaUserFriends, FaUsers, FaSearch, FaEllipsisH, FaBars, FaTimes } from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import logo from "../../../assets/logo.png";
+import { useSearch } from "../../../Context/SearchContext";
 
 const Nav = () => {
-  const [menuOpen, setMenuOpen] = useState(false);  // State to control the hamburger menu
+  const [menuOpen, setMenuOpen] = useState(false); 
+  const { setSearchTerm } = useSearch();  // Access setSearchTerm from context
+  const [input, setInput] = useState("");  // Local state for the input value
+
+
+  const handleSearchChange = (e) => {
+    setInput(e.target.value);  // Update the local input state
+  };
+
+  const handleSearchClick = () => {
+    setSearchTerm(input);  // Set searchTerm in context when the button is clicked
+  };
+  // State to control the hamburger menu
   const navLinks = (
     <>
       <li>
@@ -59,8 +72,10 @@ const Nav = () => {
             type="text"
             placeholder="Search"
             className="input input-bordered w-64"
+            value={input}  // Set input value from local state
+            onChange={handleSearchChange}  // Update the search term on input change
           />
-          <button className="btn btn-primary ml-2">
+          <button className="btn btn-primary ml-2" onClick={handleSearchClick}>
             <FaSearch />
           </button>
         </div>

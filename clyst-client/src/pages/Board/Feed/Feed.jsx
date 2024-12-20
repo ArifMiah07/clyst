@@ -1,29 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import Post from '../../../components/Post/Post';
+import React, { useEffect, useState } from "react";
+import Post from "../../../components/Post/Post";
+import { useSearch } from "../../../Context/SearchContext";
+
 
 const Feed = () => {
+  const { searchTerm } = useSearch();  // Access the searchTerm from context
   const [postData, setPostData] = useState([]);
+  const [loading, setLoading] = useState(false);  // Loading state
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/data')
-      .then((res) => res.json())
-      .then((data) => {
-        console.log('Fetched data:', data);
-        const reversedData = data?.data?.slice().reverse() || []; // Reverse the data order
-        setPostData(reversedData); 
-      })
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
+    if (!searchTerm) return;  // Don't fetch if no searchTerm is set
 
-  console.log('Number of posts:', postData?.length);
+    const fetchData = async () => {
+      setLoading(true);  // Set loading state to true before fetching data
+      let url = 'http://localhost:5000/api/data';
+      if (searchTerm) {
+        url += `?searchTerm=${searchTerm}`;  // Add searchTerm to URL if present
+      }
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        const reversedData = data?.data?.slice().reverse() || [];
+        setPostData(reversedData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);  // Set loading state to false after fetching
+      }
+    };
+    fetchData();
+  }, [searchTerm]);  // Re-fetch when searchTerm changes
 
   return (
     <div>
-      <div className="flex flex-col gap-2">
-        {postData?.map((d, i) => (
-          <Post key={d._id} data={d} />
-        ))}
-      </div>
+      {loading ? (
+        <div className="loading-spinner">Loading...</div>  // Show loading state while data is being fetched
+      ) : (
+        <div className="flex flex-col gap-2">
+          {postData?.map((d, i) => (
+            <Post key={d._id} data={d} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
