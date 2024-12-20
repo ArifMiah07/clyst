@@ -9,7 +9,8 @@ const Feed = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log('Fetched data:', data);
-        setPostData(data?.data || []); // Use the "data" key from the API response
+        const reversedData = data?.data?.slice().reverse() || []; // Reverse the data order
+        setPostData(reversedData); 
       })
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
@@ -18,9 +19,9 @@ const Feed = () => {
 
   return (
     <div>
-      <div className="flex flex-col gap-2 ">
+      <div className="flex flex-col gap-2">
         {postData?.map((d, i) => (
-          <Post key={d._id} data={d} /> // Pass "data" directly
+          <Post key={d._id} data={d} />
         ))}
       </div>
     </div>
