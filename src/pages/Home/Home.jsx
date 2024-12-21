@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Board from "../Board/Board";
 import Loading from "../Shared/Loading/Loading";
+import App from "../../App";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
 
-  const [postData, setPostData] = useState([]);
+  // const [postData, setPostData] = useState([]);
 
   // useEffect(() =>{
   //   fetch('https://clyst-server.vercel.app/api/v1/data/feed')
@@ -16,7 +17,7 @@ const Home = () => {
   //   })
   // },[])
 
-  console.log(postData);
+  // console.log(postData);
 
   useEffect(() => {
     // Simulate a delay for loading
@@ -32,8 +33,7 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <h1>this is home</h1>
+    <div className="my-2">
       <Board />
     </div>
   );

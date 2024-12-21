@@ -9,6 +9,8 @@ import Group from "../pages/Board/Group/Group";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import Search from "../pages/Board/Search/Search";
+import App from "../App";
 
 const router = createBrowserRouter([
     {
@@ -39,6 +41,13 @@ const router = createBrowserRouter([
         {
           path: '/login',
           element: <Login></Login>
+        },
+        {
+          path: '/search',
+          element: <Search></Search>
+        },{
+          path: '/app',
+          element: <App></App>
         }
       ]
     },

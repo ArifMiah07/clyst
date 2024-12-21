@@ -4,7 +4,6 @@ import { useSearch } from "../../../Context/SearchContext";
 
 
 const Feed = () => {
-  const { searchTerm } = useSearch();  // Access the searchTerm from context
   const [postData, setPostData] = useState([]);
   const [loading, setLoading] = useState(false);  // Loading state
 
@@ -17,28 +16,7 @@ const Feed = () => {
       })
     },[])
 
-  // useEffect(() => {
-  //   if (!searchTerm) return;  // Don't fetch if no searchTerm is set
-
-  //   const fetchData = async () => {
-  //     setLoading(true);  // Set loading state to true before fetching data
-  //     let url = 'https://clyst-server.vercel.app/api/v1/data/feed';
-  //     if (searchTerm) {
-  //       url += `?searchTerm=${searchTerm}`;  // Add searchTerm to URL if present
-  //     }
-  //     try {
-  //       const response = await fetch(url);
-  //       const data = await response.json();
-  //       const reversedData = data?.data?.slice().reverse() || [];
-  //       setPostData(reversedData);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     } finally {
-  //       setLoading(false);  // Set loading state to false after fetching
-  //     }
-  //   };
-  //   fetchData();
-  // }, [searchTerm]);  // Re-fetch when searchTerm changes
+    // Re-fetch when searchTerm changes
 
   console.log("postData from feed", postData);
 

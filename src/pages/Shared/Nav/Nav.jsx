@@ -1,22 +1,31 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaHome, FaUserFriends, FaUsers, FaSearch, FaEllipsisH, FaBars, FaTimes } from "react-icons/fa";
+import {
+  FaHome,
+  FaUserFriends,
+  FaUsers,
+  FaSearch,
+  FaEllipsisH,
+  FaBars,
+  FaTimes,
+} from "react-icons/fa";
 import { IoMdAddCircle } from "react-icons/io";
 import logo from "../../../assets/logo.png";
 import { useSearch } from "../../../Context/SearchContext";
 
 const Nav = () => {
-  const [menuOpen, setMenuOpen] = useState(false); 
-  const { setSearchTerm } = useSearch();  // Access setSearchTerm from context
-  const [input, setInput] = useState("");  // Local state for the input value
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { setSearchTerm } = useSearch(); // Access setSearchTerm from context
+  const [input, setInput] = useState(""); // Local state for the input value
 
   const handleSearchChange = (e) => {
-    setInput(e.target.value);  // Update the local input state
+    setInput(e.target.value); // Update the local input state
+    console.log("clicked", e.target.value);
   };
 
   const handleSearchClick = () => {
-    setSearchTerm(input);  // Set searchTerm in context when the button is clicked
+    setSearchTerm(input); // Set searchTerm in context when the button is clicked
+    console.log('clicked')
   };
   // State to control the hamburger menu
   const navLinks = (
@@ -24,37 +33,37 @@ const Nav = () => {
       <li>
         <NavLink
           to={"/"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
-        >
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
           <FaHome /> Home
         </NavLink>
       </li>
       <li>
         <NavLink
           to={"/friends"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
-        >
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
           <FaUserFriends /> Friends
         </NavLink>
       </li>
       <li>
         <NavLink
           to={"/groups"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
-        >
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
           <FaUsers /> Groups
         </NavLink>
       </li>
       <li>
         <NavLink
           to={"/post"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110"
-        >
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
           <IoMdAddCircle /> Post
         </NavLink>
       </li>
     </>
   );
+
+  const handleSearch = () => {
+    console.log("clicked");
+  };
 
   const user = false;
   const register = false;
@@ -72,12 +81,16 @@ const Nav = () => {
             type="text"
             placeholder="Search"
             className="input input-bordered w-64"
-            value={input}  // Set input value from local state
-            onChange={handleSearchChange}  // Update the search term on input change
+            value={input} // Set input value from local state
+            onChange={handleSearchChange} // Update the search term on input change
           />
-          <button className="btn btn-primary ml-2" onClick={handleSearchClick}>
-            <FaSearch />
-          </button>
+          <Link to={"/search"}>
+            <button
+              className="btn btn-primary ml-2"
+              onClick={handleSearchClick}>
+              <FaSearch />
+            </button>
+          </Link>
         </div>
       </div>
 
@@ -97,15 +110,13 @@ const Nav = () => {
       <div
         className={`lg:hidden w-full bg-base-100 absolute top-16 left-0 shadow-lg ${
           menuOpen ? "block" : "hidden"
-        }`}
-      >
+        }`}>
         <ul className="menu p-4">{navLinks}</ul>
       </div>
 
       {/* Right Section */}
       <div className="navbar-end flex items-center gap-4">
-        {
-          user ?  
+        {user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost">
               <img
@@ -116,8 +127,7 @@ const Nav = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
+              className="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
               <li>
                 <a>Profile</a>
               </li>
@@ -129,16 +139,15 @@ const Nav = () => {
               </li>
             </ul>
           </div>
-          : 
-          register ?   
-            <button className="btn btn-primary">
-              <Link to={'/login'}>Login</Link>
-            </button> 
-            : 
-            <button className="btn btn-primary">
-              <Link to={'/register'}>Register</Link>
-            </button> 
-        }
+        ) : register ? (
+          <button className="btn btn-primary">
+            <Link to={"/login"}>Login</Link>
+          </button>
+        ) : (
+          <button className="btn btn-primary">
+            <Link to={"/register"}>Register</Link>
+          </button>
+        )}
       </div>
     </div>
   );
