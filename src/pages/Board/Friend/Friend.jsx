@@ -8,7 +8,7 @@ const Friend = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/data")
+    fetch("https://clyst-server.vercel.app/api/v1/data/feed")
       .then((res) => res.json())
       .then((data) => {
         setPostData(data?.data || []);

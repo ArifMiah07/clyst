@@ -5,6 +5,19 @@ import Loading from "../Shared/Loading/Loading";
 const Home = () => {
   const [loading, setLoading] = useState(true);
 
+  const [postData, setPostData] = useState([]);
+
+  // useEffect(() =>{
+  //   fetch('https://clyst-server.vercel.app/api/v1/data/feed')
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     console.log('data from home boy' ,data)
+  //     setPostData(data.data);
+  //   })
+  // },[])
+
+  console.log(postData);
+
   useEffect(() => {
     // Simulate a delay for loading
     const timeout = setTimeout(() => {
@@ -20,6 +33,7 @@ const Home = () => {
 
   return (
     <div>
+      <h1>this is home</h1>
       <Board />
     </div>
   );

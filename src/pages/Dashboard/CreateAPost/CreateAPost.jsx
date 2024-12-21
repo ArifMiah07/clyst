@@ -41,7 +41,7 @@ const CreateAPost = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch("http://localhost:5000/api/data", {
+          const res = await fetch("https://clyst-server.vercel.app/api/v1/data/feed", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
