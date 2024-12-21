@@ -11,7 +11,7 @@ const Search = () => {
     if (!searchTerm) return; // Don't fetch if no searchTerm is set
 
     const fetchData = async () => {
-      setLoading(true); // Set loading state to true before fetching data
+      setLoading(true); // Set loading state to true before fetching
       let url = "https://clyst-server.vercel.app/api/v1/data/feed";
       if (searchTerm) {
         url += `?searchTerm=${searchTerm}`; // Add searchTerm to URL if present
@@ -31,11 +31,17 @@ const Search = () => {
   }, [searchTerm]);
 
   return (
-    <div>
+    <div className="w-full">
       {loading ? (
-        <div className="loading-spinner">Loading...</div> // Show loading state while data is being fetched
+        <div className="w-full h-[400px] flex flex-col items-center justify-center loading-spinner">
+          <span className="text-2xl">Loading...</span> {/* Show loading state while data is being fetched */}
+        </div>
+      ) : postData.length === 0 ? (
+        <div className="w-full h-[400px] flex flex-col items-center justify-center">
+          <span className="text-2xl">No results found for "{searchTerm}"</span> {/* Show message when no results are found */}
+        </div>
       ) : (
-        <div className="flex flex-col gap-2">
+        <div className="w-full flex flex-col gap-2">
           {postData?.map((d, i) => (
             <Post key={d._id} data={d} />
           ))}

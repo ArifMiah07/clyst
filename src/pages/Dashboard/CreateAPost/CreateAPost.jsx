@@ -9,27 +9,20 @@ const CreateAPost = () => {
   
   const handleCreateAPost = async (e) => {
     e.preventDefault();
-    setIsLoading(true); // Show loading while submitting
+    setIsLoading(true);
   
     const form = e.target;
-    const text = form.text.value;
-    const imgUrl = form.imgUrl.value;
-    const profileImage = form.profileImage.value;
-    const name = form.name.value;
-    const userName = form.userName.value;
-    const email = form.email.value;
-    const date = form.date.value;
-    const time = form.time.value;
-  
     const serverData = {
-      name,
-      userName,
-      email,
-      date,
-      time,
-      text,
-      imgUrl,
-      profileImage,
+      post: {  // Wrap the data in a 'post' object
+        name: form.name.value,
+        userName: form.userName.value,
+        email: form.email.value,
+        date: form.date.value,
+        time: form.time.value,
+        text: form.text.value,
+        imgUrl: form.imgUrl.value,
+        profileImage: form.profileImage.value,
+      }
     };
   
     Swal.fire({
@@ -44,23 +37,27 @@ const CreateAPost = () => {
           const res = await fetch("https://clyst-server.vercel.app/api/v1/data/feed", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
+              "content-Type": "application/json",
             },
-            body: JSON.stringify(serverData),
+            body: JSON.stringify(serverData),  // Send the wrapped data
           });
+          
+          const data = await res.json();
+          
           if (res.ok) {
             Swal.fire("Saved!", "Your data has been posted successfully.", "success");
+            form.reset(); // Clear the form after successful submission
           } else {
-            Swal.fire("Error", "Failed to save your data.", "error");
+            Swal.fire("Error", data.error?.details || "Failed to save your data.", "error");
           }
         } catch (error) {
           Swal.fire("Error", "An error occurred while saving your data.", "error");
           console.error("Error:", error);
         } finally {
-          setIsLoading(false); // Hide loading after completion
+          setIsLoading(false);
         }
       } else {
-        setIsLoading(false); // Hide loading if canceled
+        setIsLoading(false);
       }
     });
   };
