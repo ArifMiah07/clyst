@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main/Main";
 import Home from "../pages/Home/Home";
-import CreateAPost from "../pages/Dashboard/CreateAPost/CreateAPost";
 import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
 import Friend from "../pages/Board/Friend/Friend";
@@ -11,6 +10,15 @@ import Login from "../pages/Login/Login";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Search from "../pages/Board/Search/Search";
 import App from "../App";
+import Random from "../components/random/Random";
+import PricingSection from "../components/random/PricingSection";
+import DashboardStats from "../components/random/DashboardStats";
+import FuturisticDashboard from "../components/random/FuturisticDashboard";
+import QuantumCode from "../components/random/QuantumCode";
+import Notebook from "../pages/Dashboard/Notebook/Notebook";
+import AddQuickNote from "../pages/Dashboard/Notebook/Pages/AddQuickNote/AddQuickNote";
+import SavedNotes from "../pages/Dashboard/Notebook/Pages/SavedNotes/SavedNotes";
+import Note from "../pages/Dashboard/Notebook/Pages/Note/Note";
 
 const router = createBrowserRouter([
     {
@@ -45,9 +53,42 @@ const router = createBrowserRouter([
         {
           path: '/search',
           element: <Search></Search>
-        },{
+        },
+        {
+          path: '/notebook',
+          element: <Notebook></Notebook>
+        },
+        {
+          path: '/add-quick-note',
+          element: <AddQuickNote></AddQuickNote>
+        },
+        {
+          path: '/view-saved-notes',
+          element: <SavedNotes></SavedNotes>
+        },
+        {
+          path: 'note',
+          element: <Note></Note>
+        },
+        {
           path: '/app',
           element: <App></App>
+        },{
+          path: '/random',
+          element: <Random></Random>
+        },{
+          path: '/pricing',
+          element: <PricingSection></PricingSection>
+        },
+        {
+          path: '/dashboard-stats',
+          element: <DashboardStats></DashboardStats>
+        },{
+          path:'/futuristic-dashboard',
+          element: <FuturisticDashboard></FuturisticDashboard>
+        },{
+          path: '/qc',
+          element: <QuantumCode></QuantumCode>
         }
       ]
     },

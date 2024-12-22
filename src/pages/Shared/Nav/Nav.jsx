@@ -148,6 +148,13 @@ const Nav = () => {
             <Link to={"/register"}>Register</Link>
           </button>
         )}
+
+          <div>
+            <Link to={'/random'}><button className="btn btn-link">Random</button></Link>
+          </div>
+          <div>
+            <Link to={'/notebook'}><button className="btn btn-link">Notebook</button></Link>
+          </div>
       </div>
     </div>
   );
