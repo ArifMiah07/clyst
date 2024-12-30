@@ -6,7 +6,12 @@ const AddQuickNote = () => {
     <div className="flex flex-col h-screen bg-gray-100">
       {/* Header */}
       <div className="bg-green-500 text-white p-4 flex justify-between items-center">
-        <h1 className="text-lg font-semibold">Private Notebook</h1>
+        <div className="flex space-x-4">
+          <h1 className="text-lg font-semibold">Private Notebook</h1>
+          <h1 className="text-lg font-semibold">Create a new Book</h1>
+          <h1 className="text-lg font-semibold">Create a new Notebook</h1>
+          <h1 className="text-lg font-semibold">Create a new Memo</h1>
+        </div>
         <div className="flex items-center space-x-4">
           <button className="text-white text-xl">
             <i className="fas fa-search"></i> {/* Replace with your icon */}

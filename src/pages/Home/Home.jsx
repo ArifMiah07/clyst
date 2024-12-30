@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Board from "../Board/Board";
 import Loading from "../Shared/Loading/Loading";
 import App from "../../App";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -33,9 +34,15 @@ const Home = () => {
   }
 
   return (
-    <div className="my-2">
-      <Board />
-    </div>
+    <>
+      <Helmet>
+        <title>Home | Welcome to Clyst | Welcome to iClyst</title>
+        <link rel="canonical" href="https://iclyst.web.app" />
+      </Helmet>
+      <div className="my-2">
+        <Board />
+      </div>
+    </>
   );
 };
 

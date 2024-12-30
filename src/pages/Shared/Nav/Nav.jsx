@@ -12,6 +12,7 @@ import {
 import { IoMdAddCircle } from "react-icons/io";
 import logo from "../../../assets/logo.png";
 import { useSearch } from "../../../Context/SearchContext";
+import { GiNotebook } from "react-icons/gi";
 
 const Nav = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -25,7 +26,7 @@ const Nav = () => {
 
   const handleSearchClick = () => {
     setSearchTerm(input); // Set searchTerm in context when the button is clicked
-    console.log('clicked')
+    console.log("clicked");
   };
   // State to control the hamburger menu
   const navLinks = (
@@ -56,6 +57,45 @@ const Nav = () => {
           to={"/post"}
           className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
           <IoMdAddCircle /> Post
+        </NavLink>
+      </li>
+    </>
+  );
+  const mblNavLinks = (
+    <>
+      <li>
+        <NavLink
+          to={"/"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+          <FaHome /> Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/friends"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+          <FaUserFriends /> Friends
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/groups"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+          <FaUsers /> Groups
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/post"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+          <IoMdAddCircle /> Post
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to={"/notebook"}
+          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+          <IoMdAddCircle /> Notebook
         </NavLink>
       </li>
     </>
@@ -111,7 +151,7 @@ const Nav = () => {
         className={`lg:hidden w-full bg-base-100 absolute top-16 left-0 shadow-lg ${
           menuOpen ? "block" : "hidden"
         }`}>
-        <ul className="menu p-4">{navLinks}</ul>
+        <ul className="menu p-4">{mblNavLinks}</ul>
       </div>
 
       {/* Right Section */}
@@ -149,12 +189,25 @@ const Nav = () => {
           </button>
         )}
 
-          <div>
-            <Link to={'/random'}><button className="btn btn-link">Random</button></Link>
-          </div>
-          <div>
-            <Link to={'/notebook'}><button className="btn btn-link">Notebook</button></Link>
-          </div>
+        <div>
+          <Link to={"/random"}>
+            <button className="btn btn-link">Random</button>
+          </Link>
+        </div>
+        <div>
+          <NavLink
+            to="/notebook"
+            className={({ isActive }) =>
+              `flex items-center gap-2 transition-transform hover:scale-110 active ${
+                isActive
+                  ? "bg-black text-white font-bold scale-110 rounded-md py-2 px-4 hover:scale-110" // Active styles
+                  : " text-black bg-transparent hover:text-blue-500 hover:bg-[#E8E9EB] hover:rounded-md hover:py-2 hover:px-4 hover:scale-110" // Inactive styles
+              }`
+            }>
+            <GiNotebook />
+            Notebook
+          </NavLink>
+        </div>
       </div>
     </div>
   );

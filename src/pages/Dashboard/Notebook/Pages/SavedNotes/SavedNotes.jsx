@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './saved-notes.css'
+
 
 const SavedNotes = () => {
   const notes = [
@@ -11,23 +13,45 @@ const SavedNotes = () => {
     { id: 6, text: "Secret 🔐 document 📄" },
   ];
 
+  const folders = [
+    { id: 1, name: "Personal" },
+    { id: 2, name: "Work" },
+    { id: 3, name: "School" },
+    { id: 4, name: "Miscellaneous" },
+    { id: 5, name: "Important" },
+    { id: 6, name: "Urgent" },
+    { id: 7, name: "Shopping" },
+    { id: 8, name: "Secret" },
+    { id: 9, name: "Drafts" },
+    { id: 10, name: "Archived" },
+    { id: 11, name: "Deleted" },
+    { id: 12, name: "Misc" },
+    { id: 13, name: "Miscellaneous" },
+    { id: 14, name: "Misc" },
+  ];
+
   return (
     <div className="flex flex-col h-screen bg-gray-100">
       {/* Header */}
       <div className="bg-green-500 text-white p-4 flex justify-between items-center">
-        <h1 className="text-lg font-semibold">Saved Notes</h1>
+        {/* Horizontal Scrollable Folder List */}
+        <div className="flex space-x-4 small-scrollbar">
+          <h1 className="text-lg font-semibold">Saved Notes</h1>
+          {folders.map((folder) => (
+            <div key={folder.id} className="text-sm font-medium bg-green-600 px-4 py-1 rounded-lg shadow-sm">
+              {folder.name}
+            </div>
+          ))}
+        </div>
         <div className="flex items-center space-x-4">
           <button className="text-white text-xl">
-            <i className="fas fa-sort"></i>{" "}
-            {/* Replace with your sorting icon */}
+            <i className="fas fa-sort"></i>
           </button>
           <button className="text-white text-xl">
-            <i className="fas fa-search"></i>{" "}
-            {/* Replace with your search icon */}
+            <i className="fas fa-search"></i>
           </button>
           <button className="text-white text-xl">
-            <i className="fas fa-ellipsis-v"></i>{" "}
-            {/* Replace with your menu icon */}
+            <i className="fas fa-ellipsis-v"></i>
           </button>
         </div>
       </div>
@@ -37,7 +61,8 @@ const SavedNotes = () => {
         {notes.map((note) => (
           <div
             key={note.id}
-            className="w-full max-w-md p-3 bg-yellow-400 text-black font-medium rounded-md shadow-sm">
+            className="w-full max-w-md p-3 bg-yellow-400 text-black font-medium rounded-md shadow-sm"
+          >
             <Link to={"/note"}>{note.text}</Link>
           </div>
         ))}

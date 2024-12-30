@@ -150,11 +150,11 @@ const Post = ({ data }) => {
       )}
 
       {/* Views, Date, and Time */}
-      <div className="mt-4 text-sm text-gray-500">
-        <p>Views: {views}</p>
+      <div className="flex flex-row justify-between mt-4 text-sm text-gray-500">
         <p>
           Posted on: {data.date} at {data.time}
         </p>
+        <p>Views: {views}</p>
       </div>
       {/* Actions: Like, Comment, Share */}
       <div className="flex items-center justify-between mt-4">
