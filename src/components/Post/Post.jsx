@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { CiMenuKebab } from "react-icons/ci";
-import { FiThumbsUp, FiMessageCircle, FiShare } from "react-icons/fi"; // Import icons
+import { FiThumbsUp, FiMessageCircle, FiShare } from "react-icons/fi";
 
 const Post = ({ data }) => {
   const [showFullText, setShowFullText] = useState(false);
@@ -8,24 +8,34 @@ const Post = ({ data }) => {
   const [likes, setLikes] = useState(data.likes || 0);
   const [comments, setComments] = useState(data.comments || []);
   const [shares, setShares] = useState(data.shares || 0);
+  const [views, setViews] = useState(data.view || 0);
+
+  const menuRef = useRef(null);
+
+  // Toggle Post Menu
+  const handlePostMenu = () => {
+    setOpenPostMenu((prevState) => !prevState);
+  };
+
+  // Close the menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpenPostMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const handleFullText = () => setShowFullText(true);
   const handleShortText = () => setShowFullText(false);
 
-  const contentText = data.text; // Text from data
-  const placeholderImg = "https://via.placeholder.com/54?text=No+Image"; // Fallback for profileImage or imgUrl
+  const handleLike = () => setLikes(likes + 1);
 
-  const handlePostMenu = () => {
-    console.log("clicked");
-    setOpenPostMenu(true);
-  };
-
-  // Handle Like
-  const handleLike = () => {
-    setLikes(likes + 1);
-  };
-
-  // Handle Comment
   const handleComment = () => {
     const commentText = prompt("Enter your comment:");
     if (commentText) {
@@ -33,11 +43,28 @@ const Post = ({ data }) => {
     }
   };
 
-  // Handle Share
   const handleShare = () => {
     setShares(shares + 1);
     alert("Post shared!");
   };
+
+   // Increment View Count
+   useEffect(() => {
+    const viewedPosts = JSON.parse(localStorage.getItem("viewedPosts")) || {};
+
+    if (!viewedPosts[data.id]) {
+      viewedPosts[data.id] = true;
+      localStorage.setItem("viewedPosts", JSON.stringify(viewedPosts));
+      setViews((prevViews) => prevViews + 1);
+
+      // Optional: Send to backend
+      // fetch(`/api/posts/${data.id}/incrementViews`, { method: "POST" });
+    }
+  }, [data.id]);
+
+
+  const contentText = data.text;
+  const placeholderImg = "https://via.placeholder.com/54?text=No+Image";
 
   return (
     <div className="border border-gray-300 shadow-md rounded-lg p-4 bg-white w-full max-w-lg mx-auto">
@@ -59,10 +86,33 @@ const Post = ({ data }) => {
           </div>
         </div>
         {/* Menu Icon */}
-        <CiMenuKebab
-          onClick={handlePostMenu}
-          className="text-gray-500 text-xl cursor-pointer"
-        />
+        <div ref={menuRef} className="relative">
+          <CiMenuKebab
+            onClick={handlePostMenu}
+            className="text-gray-500 text-xl cursor-pointer"
+          />
+          {openPostMenu && (
+            <div className="absolute right-0 top-0 mt-10 bg-white shadow-md rounded-md p-2">
+            <ul className="space-y-2">
+              <li className="cursor-pointer hover:bg-gray-100 p-1 rounded-md">
+                <div className="tooltip" data-tip="Edit">
+                  Edit
+                </div>
+              </li>
+              <li className="cursor-pointer hover:bg-gray-100 p-1 rounded-md">
+                <div className="tooltip" data-tip="Delete">
+                  Delete
+                </div>
+              </li>
+              <li className="cursor-pointer hover:bg-gray-100 p-1 rounded-md">
+                <div className="tooltip" data-tip="Save for later">
+                  Store
+                </div>
+              </li>
+            </ul>
+          </div>
+          )}
+        </div>
       </div>
 
       {/* Content */}
@@ -99,26 +149,23 @@ const Post = ({ data }) => {
         </div>
       )}
 
-      {/* Date and Time */}
+      {/* Views, Date, and Time */}
       <div className="mt-4 text-sm text-gray-500">
-        Posted on: {data.date} at {data.time}
+        <p>Views: {views}</p>
+        <p>
+          Posted on: {data.date} at {data.time}
+        </p>
       </div>
-
       {/* Actions: Like, Comment, Share */}
       <div className="flex items-center justify-between mt-4">
-        {/* Like */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={handleLike}>
           <FiThumbsUp className="text-blue-500" />
           <span className="text-gray-700">{likes} Likes</span>
         </div>
-
-        {/* Comment */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={handleComment}>
           <FiMessageCircle className="text-gray-500" />
           <span className="text-gray-700">{comments.length} Comments</span>
         </div>
-
-        {/* Share */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={handleShare}>
           <FiShare className="text-gray-500" />
           <span className="text-gray-700">{shares} Shares</span>
