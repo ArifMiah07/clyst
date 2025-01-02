@@ -1,1 +1,1 @@
-# Clyst
+# Clyst - Demo Application

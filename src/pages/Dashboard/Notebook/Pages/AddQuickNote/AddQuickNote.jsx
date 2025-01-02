@@ -15,10 +15,10 @@ const AddQuickNote = () => {
         </div>
         <div className="flex items-center space-x-4">
           <button className="text-white text-xl">
-            <i className="fas fa-search"></i> {/* Replace with your icon */}
+            <i className="fas fa-search"></i> 
           </button>
           <button className="text-white text-xl">
-            <i className="fas fa-ellipsis-v"></i> {/* Replace with your icon */}
+            <i className="fas fa-ellipsis-v"></i> 
           </button>
         </div>
       </div>
