@@ -20,6 +20,9 @@ import AddQuickNote from "../pages/Dashboard/Notebook/Pages/AddQuickNote/AddQuic
 import SavedNotes from "../pages/Dashboard/Notebook/Pages/SavedNotes/SavedNotes";
 import Note from "../pages/Dashboard/Notebook/Pages/Note/Note";
 import CreateANewLibrary from "../pages/Dashboard/Notebook/Pages/CreateANewLibrary/CreateANewLibrary";
+import CreateANewBook from "../pages/Dashboard/Notebook/Pages/CreateANewBook/CreateANewBook";
+import CreateANewMemo from "../pages/Dashboard/Notebook/Pages/CreateANewMemo/CreateANewMemo";
+import CreateANewNotebook from "../pages/Dashboard/Notebook/Pages/CreateANewNotebook/CreateANewNotebook";
 
 const router = createBrowserRouter([
     {
@@ -77,12 +80,15 @@ const router = createBrowserRouter([
         },
         {
           path: '/create-a-new-book',
+          element: <CreateANewBook></CreateANewBook>
         },
         {
           path: '/create-a-new-notebook',
+          element: <CreateANewNotebook></CreateANewNotebook>
         },
         {
           path: '/create-a-new-memo',
+          element: <CreateANewMemo></CreateANewMemo>
         },
         {
           path: '/app',

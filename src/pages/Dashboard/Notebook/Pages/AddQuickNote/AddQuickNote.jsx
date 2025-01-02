@@ -7,12 +7,24 @@ const AddQuickNote = () => {
     <div className="flex flex-col h-screen bg-gray-100">
       {/* Header */}
       <div className="bg-green-500 text-white p-4 flex justify-between items-center">
-        <div className="flex space-x-4">
-          <h1 className="text-lg font-semibold">Private Notebook</h1>
-          <CreateAFolder path={"/create-a-new-library"} fld_name={'Create a New Library'} ></CreateAFolder>
-          <CreateAFolder path={"/create-a-new-book"} fld_name={'Create a new Book'} ></CreateAFolder>
-          <CreateAFolder path={"/create-a-new-notebook"} fld_name={'Create a New Notebook'} ></CreateAFolder>
-          <CreateAFolder path={"/create-a-new-memo"} fld_name={'Create a New Memo'} ></CreateAFolder>
+        <div className="w-full flex flex-col items-center space-x-4">
+          <div className="flex justify-between space-x-4 mb-4">
+            <h1 className="text-lg font-semibold">Private Notebook</h1>
+          </div>
+          <div className="flex justify-between space-x-4 ">
+            <CreateAFolder
+              path={"/create-a-new-library"}
+              fld_name={"Create a New Library"}></CreateAFolder>
+            <CreateAFolder
+              path={"/create-a-new-book"}
+              fld_name={"Create a new Book"}></CreateAFolder>
+            <CreateAFolder
+              path={"/create-a-new-notebook"}
+              fld_name={"Create a New Notebook"}></CreateAFolder>
+            <CreateAFolder
+              path={"/create-a-new-memo"}
+              fld_name={"Create a New Memo"}></CreateAFolder>
+          </div>
         </div>
         <div className="flex items-center space-x-4">
           <button className="text-white text-xl">
