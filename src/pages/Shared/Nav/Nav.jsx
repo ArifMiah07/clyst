@@ -61,45 +61,45 @@ const Nav = () => {
       </li>
     </>
   );
-  const mblNavLinks = (
-    <>
-      <li>
-        <NavLink
-          to={"/"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
-          <FaHome /> Home
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/friends"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
-          <FaUserFriends /> Friends
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/groups"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
-          <FaUsers /> Groups
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/post"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
-          <IoMdAddCircle /> Post
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to={"/notebook"}
-          className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
-          <IoMdAddCircle /> Notebook
-        </NavLink>
-      </li>
-    </>
-  );
+  // const mblNavLinks = (
+  //   <>
+  //     <li>
+  //       <NavLink
+  //         to={"/"}
+  //         className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+  //         <FaHome /> Home
+  //       </NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink
+  //         to={"/friends"}
+  //         className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+  //         <FaUserFriends /> Friends
+  //       </NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink
+  //         to={"/groups"}
+  //         className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+  //         <FaUsers /> Groups
+  //       </NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink
+  //         to={"/post"}
+  //         className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+  //         <IoMdAddCircle /> Post
+  //       </NavLink>
+  //     </li>
+  //     <li>
+  //       <NavLink
+  //         to={"/notebook"}
+  //         className="flex items-center gap-2 text-black hover:text-blue-500 transition-transform hover:scale-110">
+  //         <IoMdAddCircle /> Notebook
+  //       </NavLink>
+  //     </li>
+  //   </>
+  // );
 
   const handleSearch = () => {
     console.log("clicked");
@@ -151,43 +151,45 @@ const Nav = () => {
         className={`lg:hidden w-full bg-base-100 absolute top-16 left-0 shadow-lg ${
           menuOpen ? "block" : "hidden"
         }`}>
-        <ul className="menu p-4">{mblNavLinks}</ul>
+        <ul className="menu p-4">{navLinks}</ul>
       </div>
 
       {/* Right Section */}
-      <div className="navbar-end flex items-center gap-4">
-        {user ? (
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost">
-              <img
-                src="https://via.placeholder.com/40"
-                alt="Profile"
-                className="rounded-full w-10"
-              />
-            </label>
-            <ul
-              tabIndex={0}
-              className="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li>
-                <a>Profile</a>
-              </li>
-              <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
-              </li>
-            </ul>
-          </div>
-        ) : register ? (
-          <button className="btn btn-primary">
-            <Link to={"/login"}>Login</Link>
-          </button>
-        ) : (
-          <button className="btn btn-primary">
-            <Link to={"/register"}>Register</Link>
-          </button>
-        )}
+      <div className="navbar-end hidden lg:flex items-center gap-4">
+        <div className="">
+          {user ? (
+            <div className="dropdown dropdown-end ">
+              <label tabIndex={0} className="btn btn-ghost">
+                <img
+                  src="https://via.placeholder.com/40"
+                  alt="Profile"
+                  className="rounded-full w-10"
+                />
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                <li>
+                  <a>Profile</a>
+                </li>
+                <li>
+                  <a>Settings</a>
+                </li>
+                <li>
+                  <a>Logout</a>
+                </li>
+              </ul>
+            </div>
+          ) : register ? (
+            <button className="btn btn-primary">
+              <Link to={"/login"}>Login</Link>
+            </button>
+          ) : (
+            <button className="btn btn-primary">
+              <Link to={"/register"}>Register</Link>
+            </button>
+          )}
+        </div>
 
         <div>
           <Link to={"/random"}>
