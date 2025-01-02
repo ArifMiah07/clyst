@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CreateAFolder from "../../../../../components/CreateAFolder/CreateAFolder";
 
 const AddQuickNote = () => {
   return (
@@ -8,12 +9,10 @@ const AddQuickNote = () => {
       <div className="bg-green-500 text-white p-4 flex justify-between items-center">
         <div className="flex space-x-4">
           <h1 className="text-lg font-semibold">Private Notebook</h1>
-          <Link to={"/create-a-new-library"}>
-            <h1 className="text-lg font-semibold">Create a new Library</h1>
-          </Link>
-          <h1 className="text-lg font-semibold">Create a new Book</h1>
-          <h1 className="text-lg font-semibold">Create a new Notebook</h1>
-          <h1 className="text-lg font-semibold">Create a new Memo</h1>
+          <CreateAFolder path={"/create-a-new-library"} fld_name={'Create a New Library'} ></CreateAFolder>
+          <CreateAFolder path={"/create-a-new-book"} fld_name={'Create a new Book'} ></CreateAFolder>
+          <CreateAFolder path={"/create-a-new-notebook"} fld_name={'Create a New Notebook'} ></CreateAFolder>
+          <CreateAFolder path={"/create-a-new-memo"} fld_name={'Create a New Memo'} ></CreateAFolder>
         </div>
         <div className="flex items-center space-x-4">
           <button className="text-white text-xl">
