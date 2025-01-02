@@ -19,6 +19,7 @@ import Notebook from "../pages/Dashboard/Notebook/Notebook";
 import AddQuickNote from "../pages/Dashboard/Notebook/Pages/AddQuickNote/AddQuickNote";
 import SavedNotes from "../pages/Dashboard/Notebook/Pages/SavedNotes/SavedNotes";
 import Note from "../pages/Dashboard/Notebook/Pages/Note/Note";
+import CreateANewLibrary from "../pages/Dashboard/Notebook/Pages/CreateANewLibrary/CreateANewLibrary";
 
 const router = createBrowserRouter([
     {
@@ -69,6 +70,19 @@ const router = createBrowserRouter([
         {
           path: 'note',
           element: <Note></Note>
+        },
+        {
+          path: '/create-a-new-library',
+          element: <CreateANewLibrary></CreateANewLibrary>
+        },
+        {
+          path: '/create-a-new-book',
+        },
+        {
+          path: '/create-a-new-notebook',
+        },
+        {
+          path: '/create-a-new-memo',
         },
         {
           path: '/app',

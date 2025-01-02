@@ -8,17 +8,19 @@ const AddQuickNote = () => {
       <div className="bg-green-500 text-white p-4 flex justify-between items-center">
         <div className="flex space-x-4">
           <h1 className="text-lg font-semibold">Private Notebook</h1>
-          <h1 className="text-lg font-semibold">Create a new Library</h1>
+          <Link to={"/create-a-new-library"}>
+            <h1 className="text-lg font-semibold">Create a new Library</h1>
+          </Link>
           <h1 className="text-lg font-semibold">Create a new Book</h1>
           <h1 className="text-lg font-semibold">Create a new Notebook</h1>
           <h1 className="text-lg font-semibold">Create a new Memo</h1>
         </div>
         <div className="flex items-center space-x-4">
           <button className="text-white text-xl">
-            <i className="fas fa-search"></i> 
+            <i className="fas fa-search"></i>
           </button>
           <button className="text-white text-xl">
-            <i className="fas fa-ellipsis-v"></i> 
+            <i className="fas fa-ellipsis-v"></i>
           </button>
         </div>
       </div>
