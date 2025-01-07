@@ -16,11 +16,11 @@ const AddQuickNote = () => {
               path={"/create-a-new-library"}
               fld_name={"Create a New Library"}></CreateAFolder>
             <CreateAFolder
-              path={"/create-a-new-book"}
-              fld_name={"Create a new Book"}></CreateAFolder>
-            <CreateAFolder
               path={"/create-a-new-notebook"}
               fld_name={"Create a New Notebook"}></CreateAFolder>
+            <CreateAFolder
+              path={"/create-a-new-book"}
+              fld_name={"Create a new Book"}></CreateAFolder>
             <CreateAFolder
               path={"/create-a-new-memo"}
               fld_name={"Create a New Memo"}></CreateAFolder>
