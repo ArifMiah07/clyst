@@ -5,7 +5,6 @@ import {
   FaUserFriends,
   FaUsers,
   FaSearch,
-  FaEllipsisH,
   FaBars,
   FaTimes,
 } from "react-icons/fa";
@@ -101,9 +100,9 @@ const Nav = () => {
   //   </>
   // );
 
-  const handleSearch = () => {
-    console.log("clicked");
-  };
+  // const handleSearch = () => {
+  //   console.log("clicked");
+  // };
 
   const user = false;
   const register = false;

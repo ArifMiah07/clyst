@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Post from "../../../components/Post/Post";
-import { useSearch } from "../../../Context/SearchContext";
 
 
 const Feed = () => {
@@ -12,6 +11,7 @@ const Feed = () => {
       .then(res => res.json())
       .then(data => {
         console.log('data from home boy' ,data)
+        setLoading(false)
         setPostData(data.data);
       })
     },[])
@@ -27,7 +27,7 @@ const Feed = () => {
       ) : (
         <div className="flex flex-col gap-2">
           {postData?.map((d, i) => (
-            <Post key={d._id} data={d} />
+            <Post key={d._id || i} data={d} />
           ))}
         </div>
       )}
