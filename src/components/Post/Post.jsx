@@ -86,10 +86,10 @@ const Post = ({ data }) => {
           </div>
         </div>
         {/* Menu Icon */}
-        <div ref={menuRef} className="relative">
+        <div ref={menuRef} className="relative ">
           <CiMenuKebab
             onClick={handlePostMenu}
-            className="text-gray-500 text-xl cursor-pointer"
+            className="text-gray-500 z-0 text-xl cursor-pointer"
           />
           {openPostMenu && (
             <div className="absolute right-0 top-0 mt-10 bg-white shadow-md rounded-md p-2">

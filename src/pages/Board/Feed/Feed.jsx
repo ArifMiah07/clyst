@@ -25,7 +25,7 @@ const Feed = () => {
       {loading ? (
         <div className="loading-spinner">Loading...</div>  // Show loading state while data is being fetched
       ) : (
-        <div className="flex flex-col gap-2">
+        <div className="w-full h-full flex flex-col justify-center p-2  gap-2">
           {postData?.map((d, i) => (
             <Post key={d._id || i} data={d} />
           ))}

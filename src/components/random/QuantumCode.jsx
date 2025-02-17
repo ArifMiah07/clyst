@@ -103,7 +103,7 @@ const QuantumCode = () => {
   };
 
   return (
-    <div className="relative w-full h-[525px] bg-gradient-to-b from-[#1b2735] to-[#090a0f] overflow-hidden cursor-none">
+    <div className="relative w-full mt-24 h-[525px] bg-gradient-to-b from-[#1b2735] to-[#090a0f] overflow-hidden cursor-none">
       <canvas 
         ref={canvasRef}
         className="absolute inset-0 z-10 w-full"

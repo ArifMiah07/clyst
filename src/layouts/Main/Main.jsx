@@ -22,7 +22,7 @@ const Main = () => {
   return (
     <div>
       <Nav />
-      <div className="lg:h-[525px] overflow-y-scroll">
+      <div className="lg:h-[560px] overflow-y-scroll">
         <Outlet />
       </div>
     </div>

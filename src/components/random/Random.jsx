@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Random = () => {
     return (
-        <div className='flex flex-col items-center p-5'>
+        <div className='flex flex-col items-center p-5  mt-24'>
             <h1>Go to</h1>
             <div>
                 <li>

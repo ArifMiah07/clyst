@@ -39,7 +39,7 @@ const Home = () => {
         <title>Home | Welcome to Clyst | Welcome to iClyst</title>
         <link rel="canonical" href="https://iclyst.web.app" />
       </Helmet>
-      <div className="my-2">
+      <div className="my-2 ">
         <Board />
       </div>
     </>

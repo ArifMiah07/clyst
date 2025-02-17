@@ -108,7 +108,7 @@ const Nav = () => {
   const register = false;
 
   return (
-    <div className="navbar space-x-2 border-b-2 border-blue-400 bg-base-100 shadow-md">
+    <div className="navbar z-10  space-x-2 border-b-2 border-blue-400 bg-base-100 shadow-md">
       {/* Left Section */}
       <div className="navbar-start">
         <a className="btn btn-ghost hover:bg-[#0f00f0] text-xl">
@@ -184,7 +184,7 @@ const Nav = () => {
               <Link to={"/login"}>Login</Link>
             </button>
           ) : (
-            <button className="btn btn-primary">
+            <button className="">
               <Link to={"/register"}>Register</Link>
             </button>
           )}
@@ -199,10 +199,10 @@ const Nav = () => {
           <NavLink
             to="/notebook"
             className={({ isActive }) =>
-              `flex items-center gap-2 transition-transform hover:scale-110 active ${
+              `flex items-center gap-2 transition-transform active ${
                 isActive
-                  ? "bg-black text-white font-bold scale-110 rounded-md py-2 px-4 hover:scale-110" // Active styles
-                  : " text-black bg-transparent hover:text-blue-500 hover:bg-[#E8E9EB] hover:rounded-md hover:py-2 hover:px-4 hover:scale-110" // Inactive styles
+                  ? "bg-black text-white font-bold  rounded-md py-2 px-4" // Active styles
+                  : " text-black bg-transparent hover:text-blue-500 hover:rounded-md " // Inactive styles
               }`
             }>
             <GiNotebook />
